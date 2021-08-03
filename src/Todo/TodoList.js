@@ -1,25 +1,42 @@
-import React from "react";
-import TodoItem from "./TodoItem";
-import { connect } from "react-redux";
-import store from "../store/store";
+import React, { useState } from 'react';
+import TodoItem from './TodoItem';
+import { connect } from 'react-redux';
+import Modal from './Modal';
+import TodoEdit from './TodoEdit';
+import editTask from '../store/actionCreators/editTask';
+
 
 function TodoList(props) {
-  const taskAdd = props.state.map((task) => {
+    const [state, setState] = useState(false);
+    const [edit, setEdit] = useState(false);
+    const taskAdd = props.state.map((task) => {
+        return (
+            <TodoItem
+                value={task.value}
+                key={task.id}
+                id={task.id}
+                tasks={props.state}
+                class={task.class}
+                state={state}
+                setState={setState}
+                isEdit={props.isEdit}
+                edit={edit}
+                setEdit={setEdit}
+            />
+        );
+    });
     return (
-      <TodoItem
-        value={task.value}
-        key={task.id}
-        id={task.id}
-        tasks={props.state}
-        class={task.class}
-        isEdit={props.isEdit}
-      />
+        <>
+            <Modal state={state} setState={setState} />
+            <ul>{taskAdd}</ul>
+
+            <TodoEdit edit={edit} setEdit={setEdit} />
+            
+        </>
     );
-  });
-  return <ul>{taskAdd}</ul>;
 }
 
 const mapStateToProps = (state) => ({
-   state,
+    state,
 });
 export default connect(mapStateToProps)(TodoList);

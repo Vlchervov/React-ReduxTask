@@ -6,4 +6,6 @@ const defaultState = [
   { id: 5, complited: false, value: "Купить сыр" },
 ];
 
-export default defaultState;
+
+export default defaultState 
+

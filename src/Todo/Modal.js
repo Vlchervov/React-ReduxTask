@@ -1,80 +1,147 @@
-// import React, {useState} from "react";
-// import { connect } from "react-redux";
-// import addTask from "../store/actionCreators/addTask";
-// import styled from "styled-components";
-// import { render } from "@testing-library/react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import addTask from "../store/actionCreators/addTask";
+import styled from "styled-components";
 
-// const Wrapper = styled.div`
-//   max-width: 1280px;
-//   margin: 0 auto;
-//   position: relative;
-// `;
+const Wrapper = styled.div`
+`;
 
-// const ModalButtonAddTask = styled.button`
-//   position: absolute;
-//   right: 0;
-//   top: 550px;
-//   /* background-color: rgba(0, 0, 0, 0.7); */
-//   border: 1px solid rgba(255, 255, 255, 0.6);
-//   width: 60px;
-//   height: 60px;
-//   border-radius: 100%;
-//   /* -webkit-box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
-//   box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
-//   -webkit-transition: 0.5s;
-//   transition: 0.5s; */
-//   cursor: pointer;
+const ModalButtonAddTask = styled.button`
+position: absolute;
+top: 450px;
+left: 451px;
+  /* background-color: rgba(0, 0, 0, 0.7); */
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  /* -webkit-box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
+  -webkit-transition: 0.5s;
+  transition: 0.5s; */
 
-//   span {
-//     position: absolute;
-//     top: 27px;
-//     left: 14px;
-//     display: block;
-//     width: 30px;
-//     height: 3px;
-//     color: #23a3ff;
-//     background-color: #23a3ff;
-//     -webkit-transform: rotate(90deg);
-//     transform: rotate(90deg);
-//   }
+  span {
+    position: absolute;
+    display: block;
+    top: 27px;
+    left: 14px;
+    width: 30px;
+    height: 3px;
+    color: #23a3ff;
+    background-color: #23a3ff;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
 
-//   strong {
-//     position: absolute;
-//     top: 27px;
-//     left: 14px;
-//     display: block;
-//     width: 30px;
-//     height: 3px;
-//     color: #23a3ff;
-//     background-color: #23a3ff;
-//   }
-// `;
+  strong {
+    position: absolute;
+    display: block;
+    top: 27px;
+    left: 14px;
+    width: 30px;
+    height: 3px;
+    color: #23a3ff;
+    background-color: #23a3ff;
+  }
+`;
 
+const Form = styled.form`
+  margin-left: 40px;
 
+  input {
+    width: 295px;
+    height: 160px;
+    border: 2px solid #e6e6e6;
+    box-sizing: border-box;
+    padding-left: 15px;
+    border-radius: 10px;
 
-// function Modal() {
+    ::placeholder {
+      width: 255px;
+      height: 22px;
+      left: 60px;
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-size: 16px;
 
+      letter-spacing: 0.01em;
 
-//   return (
-//     <Wrapper>
-//       <ModalButtonAddTask>
-//         <span></span>
-//         <strong></strong>
-//       </ModalButtonAddTask>
+      color: #999999;
+    }
+  }
+`;
 
+const ModalBody = styled.div`
+  display: flex;
+  padding: 2rem;
+  width: 375px;
+  border-radius: 5px;
+  background: #fff;
+  height: 680px;
+  border-radius: 30px;
+`;
 
-//       <button onClick=''></button>
-//         <div className="modal">
-//           <div className="modal-body">
-//             <h1>Modal title</h1>
-//             <p>I'm awesome modal!</p>
-//             <button>Close modal</button>
-//           </div>
-//         </div>
-//     </Wrapper>
-//   );
-// }
+const AddButton = styled.button`
+  border-radius: 10px;
+  width: 137px;
+  height: 40px;
+  margin-top: 5px;
+  margin-left: 7px;
+  background-color: #23a3ff;
+`;
 
+const CloseButton = styled.button`
+  margin-left: 4px;
+  border-radius: 10px;
+  width: 137px;
+  height: 40px;
+  margin-top: 25px;
+  background-color: #f2f2f2;
+`;
 
+function Modal(props) {
+  const [value, setValue] = useState("");
 
-// export default Modal;
+  function submitHandler(event) {
+    event.preventDefault();
+
+    if (value.trim()) {
+      setValue("");
+    }
+  }
+  return (
+    
+    <Wrapper state={props.state}>
+      <ModalButtonAddTask onClick={() => props.setState(!props.state)}>
+        <span></span>
+        <strong></strong>
+      </ModalButtonAddTask>
+      {props.state &&(
+        <div className="modal">
+          <ModalBody>
+            <Form onSubmit={submitHandler}>
+              <input placeholder="Введите текст задачи" value={value} onChange={(e) => setValue(e.target.value)} />
+
+              <AddButton onClick={() => props.addTask(value, props.id)}>
+                добавить
+              </AddButton>
+              <CloseButton onClick={() => props.setState(!props.setState)}>
+                закрыть
+              </CloseButton>
+            </Form>
+          </ModalBody>
+        </div>
+      )}
+    </Wrapper>
+  );
+}
+
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  addTask: (id) => {
+    dispatch(addTask(id));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);
