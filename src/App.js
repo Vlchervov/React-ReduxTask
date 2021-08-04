@@ -3,7 +3,6 @@ import TodoList from "./Todo/TodoList";
 import AppHeader from './header/header'
 import { Provider } from "react-redux";
 import store from "./store/store";
-import TodoEdit from "./Todo/TodoEdit";
 
 const App = () => {
   return (
@@ -13,7 +12,6 @@ const App = () => {
       <div className="app">
         <TodoList 
         />
-        {/* <TodoEdit /> */}
       </div>
     </Provider>
   );

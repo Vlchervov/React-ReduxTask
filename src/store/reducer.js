@@ -1,6 +1,4 @@
-import defaultState from "./initialState";
-
-const taskReducer = (state = defaultState, action) => {
+const taskReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TASK":
       return [

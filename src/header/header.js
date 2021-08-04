@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import editTask from "../store/actionCreators/editTask";
+import { connect } from "react-redux";
 import styled from "styled-components";
+import { Transition } from "react-transition-group";
 
 const Header = styled.header`
   display: flex;
@@ -30,14 +33,61 @@ const Date = styled.h1`
 `;
 
 const AppHeader = (props) => {
+  const [value, setValue] = useState("");
+
   return (
-    <Header>
-      <Date>Сегодня</Date>
-      <button>
-        Править
-      </button>
-    </Header>
+      <Header>
+        <Date>Сегодня</Date>
+        <button onClick={() => console.log('hello!')}>Править</button>
+          {props.edit && (<div className="modal">
+            <div className="modal-body">
+           <h1>Awesome Modal</h1>
+           <p>i'm Awesome modal</p>
+           <button onClick = {() => props.setEdit(!props.setEdit)}>Close Modal</button>
+            </div>
+          </div>)}
+      </Header>
+
   );
 };
 
-export default AppHeader;
+const mapStateToProps = (state) => ({
+  state,
+});
+const mapDispatchToProps = (dispatch) => ({
+  editTask: (value, id) => {
+    dispatch(editTask(value, id));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppHeader);
+
+
+
+
+
+
+  // {/* <input
+  //             type="text"
+  //             placeholder={props.value}
+  //             onChange={(event) => setValue(event.target.value)}
+  //           ></input>
+  //           <div>
+  //             <button
+  //               onClick={() => {
+  //                 props.editTask(value, props.id);
+  //                 setVisible(false);
+  //               }}
+  //             >редактировать</button>
+  //           </div>
+  //           <button onClick={() => props.setEdit(!props.setEdit)}>
+  //             Закрыть
+  //           </button> */}
+  //             {/* <button
+  //             onClick={() => {
+  //               props.editTask(value, props.id);
+  //               setVisible(false);
+  //             }}
+  //           >
+  //             сохранить
+  //           </button> */}
