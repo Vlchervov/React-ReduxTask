@@ -7,8 +7,8 @@ const Wrapper = styled.div``;
 
 const ModalButtonAddTask = styled.button`
   position: absolute;
-  top: 450px;
-  left: 451px;
+  top: 460px;
+  left: 277px;
   /* background-color: rgba(0, 0, 0, 0.7); */
   border: 1px solid rgba(255, 255, 255, 0.6);
   width: 60px;
@@ -45,7 +45,10 @@ const ModalButtonAddTask = styled.button`
 `;
 
 const Form = styled.form`
-  margin-left: 40px;
+
+  margin-left: 10px;
+
+  
 
   input {
     width: 295px;
@@ -67,6 +70,13 @@ const Form = styled.form`
 
       color: #999999;
     }
+
+    
+  @media (min-height: 568px) and (max-width: 320px){
+    height: 120px ;
+    width: 250px;
+
+  }
   }
 `;
 
@@ -74,19 +84,42 @@ const ModalBody = styled.div`
   display: flex;
   padding: 2rem;
   width: 375px;
-  border-radius: 5px;
   background: #fff;
-  height: 680px;
-  border-radius: 30px;
+  height: 452px;
+  border-radius: 40px 40px 0px 0px;
+
+  @media screen and (min-height: 812px) and (max-width: 375px) {
+    height: 592px;
+    width: 375px;
+  };
+
+  @media (min-height: 736px) and (max-height: 736px){
+    height: 515px;
+  }
+
+  @media (min-height: 568px) and (max-width: 320px){
+    height: 380px ;
+    width: 290px;
+  }
+
 `;
 
 const AddButton = styled.button`
+  color: white;
   border-radius: 10px;
   width: 137px;
   height: 40px;
   margin-top: 5px;
   margin-left: 7px;
   background-color: #23a3ff;
+  border: 1px solid rgba(255, 255, 255, 0);
+
+  @media (min-height: 568px) and (max-width: 320px){
+    margin-left: 20px;
+    height: 40px ;
+    width: 100px;
+    
+  }
 `;
 
 const CloseButton = styled.button`
@@ -96,6 +129,13 @@ const CloseButton = styled.button`
   height: 40px;
   margin-top: 25px;
   background-color: #f2f2f2;
+  border: 1px solid rgba(255, 255, 255, 0);
+
+  @media (min-height: 568px) and (max-width: 320px){
+
+    height: 40px ;
+    width: 100px;
+  }
 `;
 
 const ModalWrapper = styled.div`
@@ -106,8 +146,8 @@ const ModalWrapper = styled.div`
   left: 0;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
-  justify-content: center;
-  padding-top: 5rem;
+  justify-content: flex-start;
+  align-items: flex-end;
 `;
 
 function Modal(props) {

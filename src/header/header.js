@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 const Header = styled.header`
   display: flex;
-  justify-content: space-between;
   font-family: Gilroy;
 
   button {
@@ -45,6 +44,8 @@ const AppHeader = (props) => {
   return (
     <Header>
       <Date>Сегодня</Date>
+
+      
       <button onClick={() => props.setEdit(!props.edit)}>Править</button>
       {props.edit && (
         <div className="modal">
