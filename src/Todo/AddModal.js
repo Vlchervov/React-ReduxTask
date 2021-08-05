@@ -87,6 +87,7 @@ const ModalBody = styled.div`
   background: #fff;
   height: 452px;
   border-radius: 40px 40px 0px 0px;
+  
 
   @media screen and (min-height: 812px) and (max-width: 375px) {
     height: 592px;

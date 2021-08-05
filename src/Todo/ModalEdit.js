@@ -4,7 +4,6 @@ import editTask from "../store/actionCreators/editTask";
 import { Transition } from "react-transition-group";
 import styled from "styled-components";
 import removeTask from "../store/actionCreators/removeTask";
-import AppHeader from '../header/header'
 
 const ListItem = styled.label`
   width: 295px;
@@ -91,20 +90,51 @@ const ButtonCancel = styled.button`
   background-color: #f2f2f2;
 `;
 
+const RemoveListButton = styled.button`
+  width: 22px;
+  height: 22px;
+  border-radius: 50px;
+  position: absolute;
+  left: 0;
+  margin-left: 16px;
+  margin-top: 9px;
+  background: #ffffff;
+  cursor: pointer;
+  display: ${props => (props.change ? 'display' : 'none')};
 
+  :hover {
+    background: #23a3ff;
+  }
+
+  &::after {
+
+  }
+`;
 
 function ModalEdit(props) {
   const [formIsVisible, setVisible] = useState(false);
-  const [value, setValue] = useState(""); 
-
+  const [value, setValue] = useState("");
 
   return (
     <>
-  
       <section>
-        <ListItem onClick={() => setVisible(true)}>{props.value}</ListItem>
-        {/* <button onClick={() => props.removeTask(props.id)}>&times;
-        </button> */}
+        <ListItem
+          onClick={() => {
+            if (props.change) {
+              setVisible(true);
+            }
+          }}
+        >
+          {props.value}
+        </ListItem>
+        <RemoveListButton
+          onClick={() => {
+            if (props.change) {
+              props.removeTask(props.id)
+              ;
+            }
+          }}
+        ></RemoveListButton>
         <Transition in={formIsVisible} timeout={2} mountOnEnter unmountOnExit>
           {() => (
             <EditItemModal>
@@ -126,7 +156,6 @@ function ModalEdit(props) {
                   <ButtonCancel onClick={() => setVisible(false)}>
                     отмена
                   </ButtonCancel>
-
                 </div>
               </EditModalBody>
             </EditItemModal>
@@ -151,4 +180,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalEdit);
-
