@@ -1,7 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import editTask from "../store/actionCreators/editTask";
+import removeTask from "../store/actionCreators/removeTask";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import ModalEdit from "../Todo/ModalEdit";
 
 const Header = styled.header`
   display: flex;
@@ -31,40 +33,21 @@ const Date = styled.h1`
 `;
 
 const AppHeader = (props) => {
-  const [value, setValue] = useState('');
+  const [change, setChange] = useState(false);
 
-  function submitHandler(event) {
-    event.preventDefault();
+  // function submitHandler(event) {
+  //   event.preventDefault();
 
-    if (value.trim()) {
-      setValue('');
-    }
-  }
+  //   if (value.trim()) {
+  //     setValue("");
+  //   }
+  // }
 
   return (
     <Header>
       <Date>Сегодня</Date>
 
-      
-      <button onClick={() => props.setEdit(!props.edit)}>Править</button>
-      {props.edit && (
-        <div className="modal">
-          <div className="modal-body">
-          <form onSubmit={submitHandler}>
-          <input
-           placeholder={props.value}
-      
-           />
-           <button onClick={() => props.editTask(value, props.id)}>
-             редактировать
-           </button>
-          </form>
-            <button onClick={() => props.setEdit(!props.setEdit)}>
-              Close Modal
-            </button>
-          </div>
-        </div>
-      )}
+      <button onClick={() => setChange(true)}>править</button>
     </Header>
   );
 };
@@ -75,6 +58,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   editTask: (value, id) => {
     dispatch(editTask(value, id));
+  },
+  removeTask: (id) => {
+    dispatch(removeTask(id));
   },
 });
 

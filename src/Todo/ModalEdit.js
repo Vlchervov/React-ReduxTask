@@ -4,6 +4,7 @@ import editTask from "../store/actionCreators/editTask";
 import { Transition } from "react-transition-group";
 import styled from "styled-components";
 import removeTask from "../store/actionCreators/removeTask";
+import AppHeader from '../header/header'
 
 const ListItem = styled.label`
   width: 295px;
@@ -27,7 +28,6 @@ const EditItemModal = styled.div`
   background: rgba(0, 0, 0, 0.2);
   justify-content: flex-start;
   align-items: flex-end;
-
 `;
 
 const EditModalBody = styled.div`
@@ -37,20 +37,17 @@ const EditModalBody = styled.div`
   height: 452px;
   border-radius: 40px 40px 0px 0px;
 
-
   @media (min-height: 812px) and (max-height: 812px) {
-    height: 650px
+    height: 650px;
   }
 
   @media (min-height: 667px) and (max-height: 667px) {
-    height: 510px
+    height: 510px;
   }
-
 
   @media (min-height: 736px) and (max-height: 736px) {
     height: 576px;
-  
-  };
+  }
 
   @media (min-height: 568px) and (max-width: 320px) {
     height: 450px;
@@ -60,12 +57,7 @@ const EditModalBody = styled.div`
     height: 510px;
   } */
 
-
-
-  
-
   input {
-
     width: 295px;
     height: 50px;
     border: 2px solid #e6e6e6;
@@ -76,14 +68,13 @@ const EditModalBody = styled.div`
     padding-left: 10px;
     font-family: "Gilroy";
   }
-  @media (min-height: 568px) and (max-width: 320px){
+  @media (min-height: 568px) and (max-width: 320px) {
     height: 450px;
-
   }
 `;
 
 const RedactionButton = styled.button`
-color: white;
+  color: white;
   border-radius: 10px;
   width: 137px;
   height: 40px;
@@ -100,15 +91,20 @@ const ButtonCancel = styled.button`
   background-color: #f2f2f2;
 `;
 
+
+
 function ModalEdit(props) {
   const [formIsVisible, setVisible] = useState(false);
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(""); 
+
 
   return (
     <>
+  
       <section>
         <ListItem onClick={() => setVisible(true)}>{props.value}</ListItem>
-
+        {/* <button onClick={() => props.removeTask(props.id)}>&times;
+        </button> */}
         <Transition in={formIsVisible} timeout={2} mountOnEnter unmountOnExit>
           {() => (
             <EditItemModal>
@@ -130,9 +126,7 @@ function ModalEdit(props) {
                   <ButtonCancel onClick={() => setVisible(false)}>
                     отмена
                   </ButtonCancel>
-                  {/* <button onClick={() => props.removeTask(props.id)}>
-                  удалить
-                </button> */}
+
                 </div>
               </EditModalBody>
             </EditItemModal>
@@ -157,3 +151,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalEdit);
+
