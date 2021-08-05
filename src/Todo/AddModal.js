@@ -3,13 +3,12 @@ import { connect } from "react-redux";
 import addTask from "../store/actionCreators/addTask";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
-`;
+const Wrapper = styled.div``;
 
 const ModalButtonAddTask = styled.button`
-position: absolute;
-top: 450px;
-left: 451px;
+  position: absolute;
+  top: 450px;
+  left: 451px;
   /* background-color: rgba(0, 0, 0, 0.7); */
   border: 1px solid rgba(255, 255, 255, 0.6);
   width: 60px;
@@ -60,7 +59,7 @@ const Form = styled.form`
       width: 255px;
       height: 22px;
       left: 60px;
-      font-family: 'Gilroy';
+      font-family: "Gilroy";
       font-style: normal;
       font-size: 16px;
 
@@ -99,7 +98,7 @@ const CloseButton = styled.button`
   background-color: #f2f2f2;
 `;
 
-const ModalWrapper = styled.div `
+const ModalWrapper = styled.div`
   position: fixed;
   top: 0;
   right: 0;
@@ -109,7 +108,7 @@ const ModalWrapper = styled.div `
   display: flex;
   justify-content: center;
   padding-top: 5rem;
-`
+`;
 
 function Modal(props) {
   const [value, setValue] = useState("");
@@ -122,18 +121,21 @@ function Modal(props) {
     }
   }
   return (
-    
     <Wrapper>
       <ModalButtonAddTask onClick={() => props.setState(!props.state)}>
         <span></span>
         <strong></strong>
       </ModalButtonAddTask>
-      {props.state &&(
+      {props.state && (
         <ModalWrapper>
-        value={props.value} 
           <ModalBody>
-            <Form onSubmit={submitHandler}>
-              <input placeholder="Введите текст задачи" value={value} onChange={(e) => setValue(e.target.value)} />
+            <Form
+            onSubmit={submitHandler}>
+              <input
+                placeholder="Введите текст задачи"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+              />
 
               <AddButton onClick={() => props.addTask(value, props.id)}>
                 добавить

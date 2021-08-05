@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import editTask from "../store/actionCreators/editTask";
-import removeTask from "../store/actionCreators/removeTask";
 import { Transition } from "react-transition-group";
 import styled from "styled-components";
+
 
 const Label = styled.label`
   width: 295px;
@@ -17,35 +17,33 @@ const Label = styled.label`
   color: #000000;
 `;
 
+
 function ModalEdit(props) {
   const [formIsVisible, setVisible] = useState(false);
   const [value, setValue] = useState("");
 
   return (
     <>
-      <section className="" htmlFor={props.id} key={props.id}>
-        <Label 
-         onClick= {() => setVisible(true)}>{props.value}</Label>{
-         props.edit &&(
-             <div 
-              className='modal'>
-          <div
-           className='modal-body'>
-           <label></label> 
+      <section htmlFor={props.id} key={props.id}>
+        <Label onClick={() => setVisible(true)}>{props.value}</Label>
+        {props.edit && (
+          <div className="modal">
+            <div className="modal-body">
+              <label></label>
+            </div>
           </div>
-      </div>)}
+        )}
         <Transition in={formIsVisible} timeout={2} mountOnEnter unmountOnExit>
           {() => (
-            <div className="">
+            <div>
               <input
-                className=""
                 type="text"
                 placeholder={props.value}
                 onChange={(event) => setValue(event.target.value)}
               ></input>
-              <div className="">
+              <div>
                 <button
-                  className=""
+                  
                   onClick={() => {
                     props.editTask(value, props.id);
                     setVisible(false);
@@ -62,8 +60,10 @@ function ModalEdit(props) {
         </Transition>
       </section>
     </>
+    
   );
 }
+
 
 const mapStateToProps = (state) => ({
   state,
