@@ -87,6 +87,7 @@ const ModalBody = styled.div`
   background: #fff;
   height: 452px;
   border-radius: 40px 40px 0px 0px;
+
   
 
   @media screen and (min-height: 812px) and (max-width: 375px) {
@@ -149,6 +150,7 @@ const ModalWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
+  z-index: 2;
 `;
 
 function Modal(props) {

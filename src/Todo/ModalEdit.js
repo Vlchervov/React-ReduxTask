@@ -27,6 +27,7 @@ const EditItemModal = styled.div`
   background: rgba(0, 0, 0, 0.2);
   justify-content: flex-start;
   align-items: flex-end;
+  z-index: 2;
 `;
 
 const EditModalBody = styled.div`
@@ -35,6 +36,7 @@ const EditModalBody = styled.div`
   background: #ffffff;
   height: 452px;
   border-radius: 40px 40px 0px 0px;
+ 
 
   @media (min-height: 812px) and (max-height: 812px) {
     height: 650px;
@@ -100,7 +102,7 @@ const RemoveListButton = styled.button`
   margin-top: 9px;
   background: #ffffff;
   cursor: pointer;
-  display: ${props => (props.change ? 'display' : 'none')};
+  z-index: 1;
 
   :hover {
     background: #23a3ff;

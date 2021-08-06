@@ -15,6 +15,7 @@ const Header = styled.header`
     margin-top: 105.5px;
     background: #f2f2f2;
     border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0);
     margin-left: 40px;
   }
 
@@ -38,7 +39,7 @@ const AppHeader = (props) => {
   return (
     <Header>
       <Date>Сегодня</Date>
-      <button onClick={() => props.setChange(!props.change)}>Править</button>
+      <button onClick={() => {props.setChange(!props.change)}}>Править</button>
     </Header>
   );
 };
