@@ -9,15 +9,10 @@ const ModalButtonAddTask = styled.button`
   position: absolute;
   top: 460px;
   left: 277px;
-  /* background-color: rgba(0, 0, 0, 0.7); */
   border: 1px solid rgba(255, 255, 255, 0.6);
   width: 60px;
   height: 60px;
   border-radius: 100%;
-  /* -webkit-box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
-  -webkit-transition: 0.5s;
-  transition: 0.5s; */
 
   span {
     position: absolute;
@@ -45,10 +40,7 @@ const ModalButtonAddTask = styled.button`
 `;
 
 const Form = styled.form`
-
   margin-left: 10px;
-
-  
 
   input {
     width: 295px;
@@ -71,12 +63,10 @@ const Form = styled.form`
       color: #999999;
     }
 
-    
-  @media (min-height: 568px) and (max-width: 320px){
-    height: 120px ;
-    width: 250px;
-
-  }
+    @media (min-height: 568px) and (max-width: 320px) {
+      height: 120px;
+      width: 250px;
+    }
   }
 `;
 
@@ -88,22 +78,19 @@ const ModalBody = styled.div`
   height: 452px;
   border-radius: 40px 40px 0px 0px;
 
-  
-
   @media screen and (min-height: 812px) and (max-width: 375px) {
     height: 592px;
     width: 375px;
-  };
+  }
 
-  @media (min-height: 736px) and (max-height: 736px){
+  @media (min-height: 736px) and (max-height: 736px) {
     height: 515px;
   }
 
-  @media (min-height: 568px) and (max-width: 320px){
-    height: 380px ;
+  @media (min-height: 568px) and (max-width: 320px) {
+    height: 380px;
     width: 290px;
   }
-
 `;
 
 const AddButton = styled.button`
@@ -118,11 +105,10 @@ const AddButton = styled.button`
   margin-left: 17px;
   font-size: 16px;
 
-  @media (min-height: 568px) and (max-width: 320px){
+  @media (min-height: 568px) and (max-width: 320px) {
     margin-left: 20px;
-    height: 40px ;
+    height: 40px;
     width: 100px;
-    
   }
 `;
 
@@ -136,9 +122,8 @@ const CloseButton = styled.button`
   border: 1px solid rgba(255, 255, 255, 0);
   font-size: 16px;
 
-  @media (min-height: 568px) and (max-width: 320px){
-
-    height: 40px ;
+  @media (min-height: 568px) and (max-width: 320px) {
+    height: 40px;
     width: 100px;
   }
 `;
@@ -175,8 +160,7 @@ function Modal(props) {
       {props.state && (
         <ModalWrapper>
           <ModalBody>
-            <Form
-            onSubmit={submitHandler}>
+            <Form onSubmit={submitHandler}>
               <input
                 placeholder="Введите текст задачи"
                 value={value}

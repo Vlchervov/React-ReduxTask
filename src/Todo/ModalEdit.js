@@ -5,6 +5,8 @@ import { Transition } from "react-transition-group";
 import styled from "styled-components";
 import removeTask from "../store/actionCreators/removeTask";
 
+
+
 const ListItem = styled.label`
   width: 295px;
   height: 22px;
@@ -52,10 +54,6 @@ const EditModalBody = styled.div`
   @media (min-height: 568px) and (max-width: 320px) {
     height: 450px;
   }
-
-  /* @media(min-height: 667px) and (max-width: 375px) {
-    height: 510px;
-  } */
 
   input {
     width: 295px;
@@ -123,7 +121,8 @@ function ModalEdit(props) {
 
   return (
     <>
-      <section>
+      <section 
+      > 
         <ListItem
           onClick={() => {
             if (props.change) {
@@ -131,7 +130,9 @@ function ModalEdit(props) {
             }
           }}
         >
-          {props.value}
+          {props.value} 
+        
+          
         </ListItem>
         <RemoveListButton
           change={props.change}
@@ -144,7 +145,7 @@ function ModalEdit(props) {
           <span></span>
         </RemoveListButton>
         <Transition in={formIsVisible} timeout={2} mountOnEnter unmountOnExit>
-          {() => (
+          {() =>  (
             <EditItemModal>
               <EditModalBody>
                 <input
