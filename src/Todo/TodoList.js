@@ -19,6 +19,7 @@ function TodoList(props) {
           id={task.id}
           class={task.class}
           change={change}
+          setChange={setChange}
         />
       </Fragment>
     );
@@ -27,6 +28,7 @@ function TodoList(props) {
   return (
     <>
       <AppHeader
+        change={change}
         tasks={props.state}
         setChange={setChange}
         value={props.value}

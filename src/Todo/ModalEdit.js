@@ -36,7 +36,6 @@ const EditModalBody = styled.div`
   background: #ffffff;
   height: 452px;
   border-radius: 40px 40px 0px 0px;
- 
 
   @media (min-height: 812px) and (max-height: 812px) {
     height: 650px;
@@ -75,6 +74,7 @@ const EditModalBody = styled.div`
 `;
 
 const RedactionButton = styled.button`
+  font-size: 16px;
   color: white;
   border-radius: 10px;
   width: 137px;
@@ -82,14 +82,17 @@ const RedactionButton = styled.button`
   margin-top: 25px;
   margin-left: 35px;
   background-color: #23a3ff;
+  border: 1px solid rgba(255, 255, 255, 0);
 `;
 
 const ButtonCancel = styled.button`
+  font-size: 16px;
   border-radius: 10px;
   width: 137px;
   height: 40px;
   margin-left: 15px;
   background-color: #f2f2f2;
+  border: 1px solid rgba(255, 255, 255, 0);
 `;
 
 const RemoveListButton = styled.button`
@@ -98,18 +101,19 @@ const RemoveListButton = styled.button`
   border-radius: 50px;
   position: absolute;
   left: 0;
+  background: white;
   margin-left: 16px;
   margin-top: 9px;
-  background: #ffffff;
+  background-image: ${({ change }) => (change ? 'url("img/delete.svg")' : "")};
   cursor: pointer;
   z-index: 1;
+  border: 2px solid #d9d9d9;
+  background-position: 50%;
 
-  :hover {
-    background: #23a3ff;
-  }
-
-  &::after {
-
+  &:focus {
+    background-image: url("img/check.svg");
+    background-size: 10px;
+    background-repeat: no-repeat;
   }
 `;
 
@@ -130,13 +134,15 @@ function ModalEdit(props) {
           {props.value}
         </ListItem>
         <RemoveListButton
+          change={props.change}
           onClick={() => {
             if (props.change) {
-              props.removeTask(props.id)
-              ;
+              props.removeTask(props.id);
             }
           }}
-        ></RemoveListButton>
+        >
+          <span></span>
+        </RemoveListButton>
         <Transition in={formIsVisible} timeout={2} mountOnEnter unmountOnExit>
           {() => (
             <EditItemModal>
@@ -153,10 +159,10 @@ function ModalEdit(props) {
                       setVisible(false);
                     }}
                   >
-                    редактировать
+                    Сохранить
                   </RedactionButton>
                   <ButtonCancel onClick={() => setVisible(false)}>
-                    отмена
+                    Отмена
                   </ButtonCancel>
                 </div>
               </EditModalBody>

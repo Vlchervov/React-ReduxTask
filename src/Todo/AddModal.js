@@ -115,6 +115,8 @@ const AddButton = styled.button`
   margin-left: 7px;
   background-color: #23a3ff;
   border: 1px solid rgba(255, 255, 255, 0);
+  margin-left: 17px;
+  font-size: 16px;
 
   @media (min-height: 568px) and (max-width: 320px){
     margin-left: 20px;
@@ -132,6 +134,7 @@ const CloseButton = styled.button`
   margin-top: 25px;
   background-color: #f2f2f2;
   border: 1px solid rgba(255, 255, 255, 0);
+  font-size: 16px;
 
   @media (min-height: 568px) and (max-width: 320px){
 
@@ -179,13 +182,12 @@ function Modal(props) {
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
               />
-
-              <AddButton onClick={() => props.addTask(value, props.id)}>
-                добавить
-              </AddButton>
               <CloseButton onClick={() => props.setState(!props.setState)}>
                 закрыть
               </CloseButton>
+              <AddButton onClick={() => props.addTask(value, props.id)}>
+                добавить
+              </AddButton>
             </Form>
           </ModalBody>
         </ModalWrapper>

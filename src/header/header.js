@@ -1,7 +1,4 @@
 import React from "react";
-import editTask from "../store/actionCreators/editTask";
-import removeTask from "../store/actionCreators/removeTask";
-import { connect } from "react-redux";
 import styled from "styled-components";
 
 const Header = styled.header`
@@ -9,15 +6,22 @@ const Header = styled.header`
   font-family: Gilroy;
 
   button {
+    color: #000000;
+    font-size: 14px;
     font-family: Gilroy;
+    font-style: normal;
+    font-weight: 500;
     height: 27px;
     width: 86px;
     margin-top: 105.5px;
-    background: #f2f2f2;
     border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0);
     margin-left: 40px;
+    letter-spacing: 0.01em;
+    border: 1px solid rgba(255, 255, 255, 0);
+    
+    
   }
+
 
 `;
 
@@ -39,20 +43,12 @@ const AppHeader = (props) => {
   return (
     <Header>
       <Date>Сегодня</Date>
-      <button onClick={() => {props.setChange(!props.change)}}>Править</button>
+      <button 
+      onClick={() => {props.setChange(!props.change)}
+      
+      }>{props.change ? 'Отмена' : 'Править'}</button>
     </Header>
   );
 };
 
-const mapStateToProps = (state) => ({
-  state,
-});
-const mapDispatchToProps = (dispatch) => ({
-  editTask: (value, id) => {
-    dispatch(editTask(value, id));
-  },
-  removeTask: (id) => {
-    dispatch(removeTask(id));
-  },
-});
-export default connect(mapStateToProps, mapDispatchToProps)(AppHeader);
+export default AppHeader;
