@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Modal from "./AddModal";
 import ModalEdit from "./ModalEdit";
 import AppHeader from "../header/header";
+import state from "../store/initialState";
 
 function TodoList(props) {
   const [state, setState] = useState(false);
@@ -11,7 +12,7 @@ function TodoList(props) {
   const taskAdd = props.state.map((task) => {
     return (
       <Fragment key={Math.random()}>
-         <ModalEdit
+        <ModalEdit
           edit={edit}
           setEdit={setEdit}
           tasks={props.state}
@@ -35,7 +36,7 @@ function TodoList(props) {
         value={props.value}
       />
       <Modal state={state} setState={setState} />
-      <ul>{taskAdd}</ul>
+      {props.state.length ? <ul>{taskAdd}</ul> : <p>Список пуст!</p>}
     </>
   );
 }

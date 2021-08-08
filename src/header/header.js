@@ -3,14 +3,13 @@ import styled from "styled-components";
 
 const Header = styled.header`
   display: flex;
-  font-family: 'Gilroy';
+  font-family: "Gilroy";
   justify-content: space-between;
-  
 
   button {
     color: #000000;
     font-size: 14px;
-    font-family:'Gilroy';
+    font-family: "Gilroy";
     font-style: normal;
     font-weight: 500;
     height: 27px;

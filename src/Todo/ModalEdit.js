@@ -6,24 +6,18 @@ import styled from "styled-components";
 import removeTask from "../store/actionCreators/removeTask";
 import state from "../store/initialState";
 
-
-
 const ListItem = styled.label`
-
   height: 22px;
   font-family: "Gilroy";
   font-size: 18px;
   font-weight: 500;
   line-height: 40px;
   letter-spacing: 0.01em;
-  
 
   color: #000000;
 
   @media (min-height: 568px) and (max-width: 320px) {
     font-size: 15px;
-    
-    
   }
 `;
 
@@ -78,7 +72,7 @@ const EditModalBody = styled.div`
 
     @media (min-height: 568px) and (max-width: 320px) {
       margin-left: 19px;
-}
+    }
   }
 `;
 
@@ -136,32 +130,28 @@ function ModalEdit(props) {
 
   return (
     <>
-      <section 
-      > 
-           <ListItem
-           change={state}
+      <section>
+        <ListItem
+          change={state}
           onClick={() => {
             if (props.change) {
               setVisible(true);
             }
           }}
         >
+          {props.value}
+        </ListItem>
 
-        {props.value} 
-        </ListItem> 
-          
-         <RemoveListButton
+        <RemoveListButton
           change={props.change}
           onClick={() => {
             if (props.change) {
               props.removeTask(props.id);
-
-            }    
+            }
           }}
-        >
-        </RemoveListButton>
+        ></RemoveListButton>
         <Transition in={formIsVisible} timeout={2} mountOnEnter unmountOnExit>
-          {() =>  (
+          {() => (
             <EditItemModal>
               <EditModalBody>
                 <input
