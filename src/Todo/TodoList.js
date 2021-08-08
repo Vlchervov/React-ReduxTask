@@ -3,6 +3,13 @@ import { connect } from "react-redux";
 import Modal from "./AddModal";
 import ModalEdit from "./ModalEdit";
 import AppHeader from "../header/header";
+import styled from "styled-components";
+
+const AfterRemove = styled.p`
+  font-family: "Gilroy";
+  font-size: 18px;
+  margin-left: 15px;
+`;
 
 function TodoList(props) {
   const [state, setState] = useState(false);
@@ -35,7 +42,11 @@ function TodoList(props) {
         value={props.value}
       />
       <Modal state={state} setState={setState} />
-      {props.state.length ? <ul>{taskAdd}</ul> : <p>Список пуст!</p>}
+      {props.state.length ? (
+        <ul>{taskAdd}</ul>
+      ) : (
+        <AfterRemove>Список пуст!</AfterRemove>
+      )}
     </>
   );
 }
