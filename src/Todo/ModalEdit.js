@@ -16,6 +16,7 @@ const ListItem = styled.label`
   font-weight: 500;
   line-height: 40px;
   letter-spacing: 0.01em;
+  
 
   color: #000000;
 
