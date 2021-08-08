@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import Modal from "./AddModal";
 import ModalEdit from "./ModalEdit";
 import AppHeader from "../header/header";
-import state from "../store/initialState";
 
 function TodoList(props) {
   const [state, setState] = useState(false);
