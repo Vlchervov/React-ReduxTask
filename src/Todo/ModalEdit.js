@@ -4,11 +4,12 @@ import editTask from "../store/actionCreators/editTask";
 import { Transition } from "react-transition-group";
 import styled from "styled-components";
 import removeTask from "../store/actionCreators/removeTask";
+import state from "../store/initialState";
 
 
 
 const ListItem = styled.label`
-  width: 295px;
+
   height: 22px;
   font-family: "Gilroy";
   font-size: 18px;
@@ -17,6 +18,12 @@ const ListItem = styled.label`
   letter-spacing: 0.01em;
 
   color: #000000;
+
+  @media (min-height: 568px) and (max-width: 320px) {
+    font-size: 15px;
+    
+    
+  }
 `;
 
 const EditItemModal = styled.div`
@@ -48,6 +55,8 @@ const EditModalBody = styled.div`
   }
 
   @media (min-height: 736px) and (max-height: 736px) {
+    height: 515px;
+    padding-left: 1.5rem;
     height: 576px;
   }
 
@@ -65,9 +74,10 @@ const EditModalBody = styled.div`
     margin-left: 33px;
     padding-left: 10px;
     font-family: "Gilroy";
-  }
-  @media (min-height: 568px) and (max-width: 320px) {
-    height: 450px;
+
+    @media (min-height: 568px) and (max-width: 320px) {
+      margin-left: 19px;
+}
   }
 `;
 
@@ -81,6 +91,10 @@ const RedactionButton = styled.button`
   margin-left: 35px;
   background-color: #23a3ff;
   border: 1px solid rgba(255, 255, 255, 0);
+
+  @media (min-height: 568px) and (max-width: 320px) {
+    margin-left: 20px;
+  }
 `;
 
 const ButtonCancel = styled.button`
@@ -123,26 +137,27 @@ function ModalEdit(props) {
     <>
       <section 
       > 
-        <ListItem
+           <ListItem
+           change={state}
           onClick={() => {
             if (props.change) {
               setVisible(true);
             }
           }}
         >
-          {props.value} 
-        
+
+        {props.value} 
+        </ListItem> 
           
-        </ListItem>
-        <RemoveListButton
+         <RemoveListButton
           change={props.change}
           onClick={() => {
             if (props.change) {
               props.removeTask(props.id);
-            }
+
+            }    
           }}
         >
-          <span></span>
         </RemoveListButton>
         <Transition in={formIsVisible} timeout={2} mountOnEnter unmountOnExit>
           {() =>  (

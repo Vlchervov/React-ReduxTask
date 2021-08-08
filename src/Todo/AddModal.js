@@ -85,6 +85,7 @@ const ModalBody = styled.div`
 
   @media (min-height: 736px) and (max-height: 736px) {
     height: 515px;
+    padding-left: 3rem;
   }
 
   @media (min-height: 568px) and (max-width: 320px) {
@@ -125,6 +126,7 @@ const CloseButton = styled.button`
   @media (min-height: 568px) and (max-width: 320px) {
     height: 40px;
     width: 100px;
+    margin-left: 10px;
   }
 `;
 

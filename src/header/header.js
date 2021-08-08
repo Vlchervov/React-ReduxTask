@@ -18,11 +18,7 @@ const Header = styled.header`
     margin-left: 40px;
     letter-spacing: 0.01em;
     border: 1px solid rgba(255, 255, 255, 0);
-    
-    
   }
-
-
 `;
 
 const Date = styled.h1`
@@ -37,16 +33,17 @@ const Date = styled.h1`
   letter-spacing: 0.01em;
 `;
 
-
-
 const AppHeader = (props) => {
   return (
     <Header>
       <Date>Сегодня</Date>
-      <button 
-      onClick={() => {props.setChange(!props.change)}
-      
-      }>{props.change ? 'Отмена' : 'Править'}</button>
+      <button
+        onClick={() => {
+          props.setChange(!props.change);
+        }}
+      >
+        {props.change ? "Отмена" : "Править"}
+      </button>
     </Header>
   );
 };
