@@ -17,7 +17,7 @@ function TodoList(props) {
   const [change, setChange] = useState(false);
   const taskAdd = props.state.map((task) => {
     return (
-      <Fragment key={Math.random()}>
+      <Fragment key={task.id}>
         <ModalEdit
           edit={edit}
           setEdit={setEdit}
