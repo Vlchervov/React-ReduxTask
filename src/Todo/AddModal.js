@@ -168,7 +168,9 @@ function Modal(props) {
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
               />
-              <CloseButton onClick={() => props.setState(!props.setState)}>
+              <CloseButton onClick={(e) => {
+                e.preventDefault()
+                props.setState(!props.setState)}}>
                 закрыть
               </CloseButton>
               <AddButton onClick={() => props.addTask(value, props.id)}>
