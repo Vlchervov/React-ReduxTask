@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
 import { connect } from "react-redux";
-import Modal from "./AddModal";
+import AddModal from "./AddModal";
 import ModalEdit from "./ModalEdit";
-import AppHeader from "../header/header";
+import AppHeader from "../header/AppHeader";
 import styled from "styled-components";
 
 const AfterRemove = styled.p`
@@ -13,18 +13,14 @@ const AfterRemove = styled.p`
 
 function TodoList(props) {
   const [state, setState] = useState(false);
-  const [edit, setEdit] = useState(false);
   const [change, setChange] = useState(false);
   const taskAdd = props.state.map((task) => {
     return (
       <Fragment key={task.id}>
         <ModalEdit
-          edit={edit}
-          setEdit={setEdit}
           tasks={props.state}
           value={task.value}
           id={task.id}
-          class={task.class}
           change={change}
           setChange={setChange}
           state={state}
@@ -41,7 +37,7 @@ function TodoList(props) {
         setChange={setChange}
         value={props.value}
       />
-      <Modal state={state} setState={setState} />
+      <AddModal state={state} setState={setState} />
       {props.state.length ? (
         <ul>{taskAdd}</ul>
       ) : (

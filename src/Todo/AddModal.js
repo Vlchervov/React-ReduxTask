@@ -143,7 +143,7 @@ const ModalWrapper = styled.div`
   z-index: 2;
 `;
 
-function Modal(props) {
+function AddModal(props) {
   const [value, setValue] = useState("");
 
   function submitHandler(event) {
@@ -168,9 +168,12 @@ function Modal(props) {
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
               />
-              <CloseButton onClick={(e) => {
-                e.preventDefault()
-                props.setState(!props.setState)}}>
+              <CloseButton
+                onClick={(e) => {
+                  e.preventDefault();
+                  props.setState(!props.setState);
+                }}
+              >
                 закрыть
               </CloseButton>
               <AddButton onClick={() => props.addTask(value, props.id)}>
@@ -192,4 +195,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default connect(mapStateToProps, mapDispatchToProps)(AddModal);

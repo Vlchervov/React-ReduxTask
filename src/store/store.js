@@ -1,7 +1,7 @@
-import { createStore } from 'redux';
-import reducer from './reducer'
-import state from './initialState'
+import { createStore } from "redux";
+import taskReducer from "./reducer";
+import state from "./initialState";
 
-const store = createStore(reducer, state);
+const store = createStore(taskReducer, state);
 
 export default store;
