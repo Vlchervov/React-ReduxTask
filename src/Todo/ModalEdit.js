@@ -129,7 +129,7 @@ function ModalEdit(props) {
   const [value, setValue] = useState("");
 
   return (
-    <>
+    
       <section>
         <ListItem
           change={state}
@@ -177,7 +177,6 @@ function ModalEdit(props) {
           )}
         </Transition>
       </section>
-    </>
   );
 }
 
