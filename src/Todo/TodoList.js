@@ -1,15 +1,9 @@
 import React, { Fragment, useState } from "react";
 import { connect } from "react-redux";
 import AddModal from "./AddModal";
-import ModalEdit from "./ModalEdit";
+import TodoItem from "./TodoItem";
 import AppHeader from "../header/AppHeader";
-import styled from "styled-components";
-
-const AfterRemove = styled.p`
-  font-family: "Gilroy";
-  font-size: 18px;
-  margin-left: 15px;
-`;
+import { AfterRemove } from "../styledComponents/todoList.styled";
 
 function TodoList(props) {
   const [state, setState] = useState(false);
@@ -17,7 +11,7 @@ function TodoList(props) {
   const taskAdd = props.state.map((task) => {
     return (
       <Fragment key={task.id}>
-        <ModalEdit
+        <TodoItem
           tasks={props.state}
           value={task.value}
           id={task.id}
@@ -37,12 +31,12 @@ function TodoList(props) {
         setChange={setChange}
         value={props.value}
       />
-      <AddModal state={state} setState={setState} />
       {props.state.length ? (
         <ul>{taskAdd}</ul>
       ) : (
         <AfterRemove>Список пуст!</AfterRemove>
       )}
+      <AddModal state={state} setState={setState} change={change} />
     </>
   );
 }
