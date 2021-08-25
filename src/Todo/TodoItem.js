@@ -32,8 +32,9 @@ function TodoItem(props) {
       >
         {props.value}
       </ListItem>
-      <Remove change={props.change}
-      onClick={() => {
+      <Remove
+        change={props.change}
+        onClick={() => {
           if (props.change) {
             props.removeTask(props.id);
           }
@@ -48,7 +49,7 @@ function TodoItem(props) {
           <EditItemModal>
             <EditModalBody>
               <input
-                type="password | text"
+                type="text"
                 onChange={(event) => setState(event.target.value)}
               ></input>
               <div>

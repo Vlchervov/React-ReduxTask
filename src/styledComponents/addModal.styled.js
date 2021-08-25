@@ -1,20 +1,18 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-display: flex;
-justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 export const ModalButtonAddTask = styled.button`
   position: absolute;
+  bottom: 5%;
   border: 1px solid rgba(255, 255, 255, 0.6);
   width: 60px;
   height: 60px;
   border-radius: 100%;
-  background: ${({ change }) => (change ? 'none' : '')};
-
-
- 
+  background: ${({ change }) => (change ? "none" : "")};
 
   span {
     position: absolute;
@@ -81,17 +79,21 @@ export const ModalBody = styled.div`
   border-radius: 40px 40px 0px 0px;
 
   @media screen and (min-height: 812px) and (max-width: 375px) {
-    height: 592px;
+    height: 682px;
     width: 375px;
   }
 
   @media (min-height: 736px) and (max-height: 736px) {
-    height: 515px;
+    height: 600px;
     padding-left: 3rem;
   }
 
+  @media (min-height: 667px) and (max-height: 667px) {
+    height: 536px;
+  }
+
   @media (min-height: 568px) and (max-width: 320px) {
-    height: 380px;
+    height: 430px;
     width: 290px;
   }
 `;

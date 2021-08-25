@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.section `
-
-`
+export const Wrapper = styled.li`
+  list-style: none;
+`;
 
 export const ListItem = styled.label`
   height: 22px;
@@ -38,21 +38,20 @@ export const EditModalBody = styled.div`
   border-radius: 40px 40px 0px 0px;
 
   @media (min-height: 812px) and (max-height: 812px) {
-    height: 650px;
+    height: 740px;
   }
 
   @media (min-height: 667px) and (max-height: 667px) {
-    height: 510px;
+    height: 595px;
   }
 
   @media (min-height: 736px) and (max-height: 736px) {
-    height: 515px;
     padding-left: 1.5rem;
-    height: 576px;
+    height: 662px;
   }
 
   @media (min-height: 568px) and (max-width: 320px) {
-    height: 450px;
+    height: 490px;
   }
 
   input {
@@ -68,6 +67,7 @@ export const EditModalBody = styled.div`
 
     @media (min-height: 568px) and (max-width: 320px) {
       margin-left: 19px;
+      width: 270px;
     }
   }
 `;
@@ -84,7 +84,8 @@ export const RedactionButton = styled.button`
   border: 1px solid rgba(255, 255, 255, 0);
 
   @media (min-height: 568px) and (max-width: 320px) {
-    margin-left: 20px;
+    margin-left: 25px;
+    width: 120px;
   }
 `;
 
@@ -96,6 +97,10 @@ export const ButtonCancel = styled.button`
   margin-left: 15px;
   background-color: #f2f2f2;
   border: 1px solid rgba(255, 255, 255, 0);
+
+  @media (min-height: 568px) and (max-width: 320px) {
+    width: 120px;
+  }
 `;
 
 export const RemoveListButton = styled.input`
@@ -108,16 +113,13 @@ export const RemoveListButton = styled.input`
   margin-top: 9px;
   cursor: pointer;
   border: 2px solid #d9d9d9;
-  display: ${({change}) => change ? 'none' : 'none'};
-
-  ; 
+  display: ${({ change }) => (change ? "none" : "none")}; ;
 `;
 
-
-export const Remove = styled.button `
+export const Remove = styled.button`
   border-radius: 50px;
-  display: ${({change}) => change ? '' : 'none'};
-  background-image: ${({change}) => change ? 'url("img/delete.svg")' : ''};
+  display: ${({ change }) => (change ? "" : "none")};
+  background-image: ${({ change }) => (change ? 'url("img/delete.svg")' : "")};
   width: 22px;
   height: 22px;
   position: absolute;
@@ -128,4 +130,4 @@ export const Remove = styled.button `
   background-position: 50%;
   border: 1px none;
   background-repeat: no-repeat;
-`
+`;

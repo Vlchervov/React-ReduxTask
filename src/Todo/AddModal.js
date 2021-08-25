@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { Transition } from "react-transition-group";
 import {addTask} from "../store/actionCreators/actions";
 
 import {
@@ -14,6 +15,7 @@ import {
 
 function AddModal(props) {
   const [value, setValue] = useState("");
+  const [formIsVisible, setVisible] = useState(false);
 
   function submitHandler(event) {
     event.preventDefault();
@@ -29,13 +31,16 @@ function AddModal(props) {
         onClick={() => {
           if (!props.change) {
             props.setState(!props.state);
+            setVisible(true);
           }
         }}
       >
         <span></span>
         <strong></strong>
       </ModalButtonAddTask>
-      {props.state && (
+
+      <Transition in={formIsVisible} timeout={2} mountOnEnter unmountOnExit>
+      {() => (
         <ModalWrapper>
           <ModalBody>
             <Form onSubmit={submitHandler}>
@@ -45,9 +50,8 @@ function AddModal(props) {
                 onChange={(e) => setValue(e.target.value)}
               />
               <CloseButton
-                onClick={(e) => {
+                onClick={(e) => {setVisible(false)
                   e.preventDefault();
-                  props.setState(!props.setState);
                 }}
               >
                 закрыть
@@ -55,6 +59,7 @@ function AddModal(props) {
               <AddButton
                 onClick={() => {
                   props.addTask(value, props.id);
+                  setVisible(false)
                 }}
               >
                 добавить
@@ -62,7 +67,9 @@ function AddModal(props) {
             </Form>
           </ModalBody>
         </ModalWrapper>
+
       )}
+      </Transition>
     </Wrapper>
   );
 }
