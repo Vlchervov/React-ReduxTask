@@ -23,7 +23,6 @@ function AddModal(props) {
     }
   }
   return (
-    
     <Wrapper>
       <ModalButtonAddTask
         change={props.change}

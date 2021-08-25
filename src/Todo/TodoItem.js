@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+
 import { connect } from "react-redux";
-import {editTask} from "../store/actionCreators/actions";
+import { editTask } from "../store/actionCreators/actions";
 import { removeTask } from "../store/actionCreators/actions";
 import { Transition } from "react-transition-group";
 import {
@@ -10,15 +11,17 @@ import {
   RedactionButton,
   ButtonCancel,
   RemoveListButton,
-} from "../styledComponents/modalEdit.styled";
+  Wrapper,
+  Remove,
+} from "../styledComponents/todoItem.styled.js";
 import state from "../store/initialState";
 
 function TodoItem(props) {
   const [formIsVisible, setVisible] = useState(false);
-  const [value, setValue] = useState("");
+  const [set, setState] = useState("");
 
   return (
-    <section>
+    <Wrapper>
       <ListItem
         change={state}
         onClick={() => {
@@ -29,27 +32,29 @@ function TodoItem(props) {
       >
         {props.value}
       </ListItem>
-
-      <RemoveListButton
-        change={props.change}
-        onClick={() => {
+      <Remove change={props.change}
+      onClick={() => {
           if (props.change) {
             props.removeTask(props.id);
           }
         }}
+      ></Remove>
+      <RemoveListButton
+        change={props.change}
+        type="checkbox"
       ></RemoveListButton>
       <Transition in={formIsVisible} timeout={2} mountOnEnter unmountOnExit>
         {() => (
           <EditItemModal>
             <EditModalBody>
               <input
-                type="text"
-                onChange={(event) => setValue(event.target.value)}
+                type="password | text"
+                onChange={(event) => setState(event.target.value)}
               ></input>
               <div>
                 <RedactionButton
                   onClick={() => {
-                    props.editTask(value, props.id);
+                    props.editTask(set, props.id);
                     setVisible(false);
                   }}
                 >
@@ -63,7 +68,7 @@ function TodoItem(props) {
           </EditItemModal>
         )}
       </Transition>
-    </section>
+    </Wrapper>
   );
 }
 

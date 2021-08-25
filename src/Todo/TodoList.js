@@ -8,10 +8,12 @@ import { AfterRemove } from "../styledComponents/todoList.styled";
 function TodoList(props) {
   const [state, setState] = useState(false);
   const [change, setChange] = useState(false);
+  
   const taskAdd = props.state.map((task) => {
     return (
       <Fragment key={task.id}>
         <TodoItem
+          completed={task.completed}
           tasks={props.state}
           value={task.value}
           id={task.id}

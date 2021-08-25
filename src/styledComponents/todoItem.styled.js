@@ -1,4 +1,8 @@
-import styled from 'styled-components'
+import styled from "styled-components";
+
+export const Wrapper = styled.section `
+
+`
 
 export const ListItem = styled.label`
   height: 22px;
@@ -7,9 +11,7 @@ export const ListItem = styled.label`
   font-weight: 500;
   line-height: 40px;
   letter-spacing: 0.01em;
-
   color: #000000;
-
   @media (min-height: 568px) and (max-width: 320px) {
     font-size: 15px;
   }
@@ -96,24 +98,34 @@ export const ButtonCancel = styled.button`
   border: 1px solid rgba(255, 255, 255, 0);
 `;
 
-export const RemoveListButton = styled.button`
+export const RemoveListButton = styled.input`
   width: 22px;
   height: 22px;
-  border-radius: 50px;
   position: absolute;
   left: 0;
   background: white;
   margin-left: 16px;
   margin-top: 9px;
-  background-image: ${({ change }) => (change ? 'url("img/delete.svg")' : "")};
   cursor: pointer;
-  z-index: 1;
   border: 2px solid #d9d9d9;
-  background-position: 50%;
+  display: ${({change}) => change ? 'none' : 'none'};
 
-  &:focus {
-    background-image: url("img/check.svg");
-    background-size: 10px;
-    background-repeat: no-repeat;
-  }
+  ; 
 `;
+
+
+export const Remove = styled.button `
+  border-radius: 50px;
+  display: ${({change}) => change ? '' : 'none'};
+  background-image: ${({change}) => change ? 'url("img/delete.svg")' : ''};
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  left: 0;
+  margin-left: 16px;
+  margin-top: 9px;
+  cursor: pointer;
+  background-position: 50%;
+  border: 1px none;
+  background-repeat: no-repeat;
+`
