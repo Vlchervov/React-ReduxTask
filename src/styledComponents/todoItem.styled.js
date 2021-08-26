@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.li`
+  position: relative;
   list-style: none;
 `;
 
@@ -15,6 +16,22 @@ export const ListItem = styled.label`
   @media (min-height: 568px) and (max-width: 320px) {
     font-size: 15px;
   }
+
+  &::before {
+    z-index: 10;
+    content: " ";
+    cursor: pointer;
+    position: absolute;
+    top: 7px;
+    left: -35px;
+    height: 22px;
+    width: 22px;
+    border: ${({ change }) => (change ? "none" : "1px solid #D9D9D9")};
+    background-color: white;
+    border-radius: 100%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+  }
 `;
 
 export const EditItemModal = styled.div`
@@ -27,7 +44,7 @@ export const EditItemModal = styled.div`
   background: rgba(0, 0, 0, 0.2);
   justify-content: flex-start;
   align-items: flex-end;
-  z-index: 2;
+  z-index: 11;
 `;
 
 export const EditModalBody = styled.div`
@@ -103,31 +120,72 @@ export const ButtonCancel = styled.button`
   }
 `;
 
-export const RemoveListButton = styled.input`
-  width: 22px;
-  height: 22px;
+export const TodoItemButton = styled.div`
   position: absolute;
-  left: 0;
-  background: white;
-  margin-left: 16px;
-  margin-top: 9px;
+  top: 15%;
+  left: -12%;
   cursor: pointer;
-  border: 2px solid #d9d9d9;
-  display: ${({ change }) => (change ? "none" : "none")}; ;
+
+  /* &:before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    left: 6px;
+    top: 5px;
+    height: 15px;
+    border-radius: 100%;
+    z-index: 10;
+    background-size: 100%;
+  } */
+
+  /* input[type="checkbox"] {
+    display: none;
+    z-index: ${({ change }) => (change ? "1" : "10")};
+  } */
+
+  /* input[type='checkbox']:checked + label::before {
+    background-image: url(img/check.svg)
+  } */
+
+  /* &::after {
+    content: " ";
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    left: 3px;
+    top: 1px;
+    height: 22px;
+    width: 22px;
+    border: 1px solid #d9d9d9;
+    border-radius: 50px;
+    background-color: white;
+    display: ${({ change }) => (change ? "none" : "")};
+  } */
 `;
 
 export const Remove = styled.button`
   border-radius: 50px;
   display: ${({ change }) => (change ? "" : "none")};
-  background-image: ${({ change }) => (change ? 'url("img/delete.svg")' : "")};
   width: 22px;
   height: 22px;
   position: absolute;
-  left: 0;
-  margin-left: 16px;
+  left: -12%;
+  top: -1%;
   margin-top: 9px;
   cursor: pointer;
   background-position: 50%;
-  border: 1px none;
+  background-color: white;
+  border: ${({ change }) => (change ? "none" : "2px solid #d9d9d9")};
   background-repeat: no-repeat;
+  z-index: ${({ change }) => (change ? "10" : "1")};
+
+  &::after {
+    background-image: ${({ change }) =>
+      change ? 'url("img/delete.svg")' : ""};
+    content: " ";
+    cursor: pointer;
+    display: block;
+    width: 22px;
+    height: 22px;
+  }
 `;

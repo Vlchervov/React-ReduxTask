@@ -71,11 +71,11 @@ export const Form = styled.form`
 `;
 
 export const ModalBody = styled.div`
-  display: flex;
   padding: 2rem;
   width: 375px;
   background: #fff;
   height: 452px;
+  z-index: 4;
   border-radius: 40px 40px 0px 0px;
 
   @media screen and (min-height: 812px) and (max-width: 375px) {

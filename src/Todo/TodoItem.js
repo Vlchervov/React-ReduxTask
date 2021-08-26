@@ -10,28 +10,34 @@ import {
   EditModalBody,
   RedactionButton,
   ButtonCancel,
-  RemoveListButton,
   Wrapper,
   Remove,
+  TodoItemButton,
 } from "../styledComponents/todoItem.styled.js";
 import state from "../store/initialState";
 
 function TodoItem(props) {
   const [formIsVisible, setVisible] = useState(false);
-  const [set, setState] = useState("");
+  const [set, setState] = useState(props.value);
 
   return (
     <Wrapper>
       <ListItem
-        change={state}
+        htmlFor={props.id}
+        change={state | props.change}
         onClick={() => {
           if (props.change) {
             setVisible(true);
           }
         }}
       >
+        <input type="checkbox" id={props.id}></input>
         {props.value}
       </ListItem>
+      <TodoItemButton change={props.change}>
+        {/* <input type="checkbox" id={props.id}></input> */}
+      </TodoItemButton>
+
       <Remove
         change={props.change}
         onClick={() => {
@@ -40,16 +46,13 @@ function TodoItem(props) {
           }
         }}
       ></Remove>
-      <RemoveListButton
-        change={props.change}
-        type="checkbox"
-      ></RemoveListButton>
       <Transition in={formIsVisible} timeout={2} mountOnEnter unmountOnExit>
         {() => (
           <EditItemModal>
             <EditModalBody>
               <input
                 type="text"
+                value={set}
                 onChange={(event) => setState(event.target.value)}
               ></input>
               <div>
