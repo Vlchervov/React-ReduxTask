@@ -12,10 +12,12 @@ const taskReducer = (state, action) => {
       ];
     case "REMOVE_TASK":
       return state.filter((task) => task.id !== action.payload);
+
     case "EDIT_TASK":
       const todoIndex = state.findIndex(({ id }) => id === action.payload.id);
       state[todoIndex].value = action.payload.value;
       return [...state];
+      
     default:
       return state;
   }

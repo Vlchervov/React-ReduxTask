@@ -13,13 +13,10 @@ function TodoList(props) {
     return (
       <Fragment key={task.id}>
         <TodoItem
-          completed={task.completed}
           tasks={props.state}
           value={task.value}
           id={task.id}
           change={change}
-          setChange={setChange}
-          state={state}
         />
       </Fragment>
     );

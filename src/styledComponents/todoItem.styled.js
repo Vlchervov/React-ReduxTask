@@ -3,6 +3,15 @@ import styled from "styled-components";
 export const Wrapper = styled.li`
   position: relative;
   list-style: none;
+
+  input[type='checkbox'] {
+    display: none;
+    z-index: ${({change}) => (change ? '1' : '10')};
+  }
+
+  input[type='checkbox']:checked + label::before {
+    background-image: url(img/check.svg);
+  }
 `;
 
 export const ListItem = styled.label`
@@ -18,7 +27,7 @@ export const ListItem = styled.label`
   }
 
   &::before {
-    z-index: 10;
+   
     content: " ";
     cursor: pointer;
     position: absolute;
@@ -32,6 +41,11 @@ export const ListItem = styled.label`
     background-repeat: no-repeat;
     background-position: 50%;
   }
+
+  input[type='checkbox'] {
+
+  }
+
 `;
 
 export const EditItemModal = styled.div`

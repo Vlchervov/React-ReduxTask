@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { editTask } from "../store/actionCreators/actions";
 import { removeTask } from "../store/actionCreators/actions";
+import { toggleTask } from "../store/actionCreators/actions";
 import { Transition } from "react-transition-group";
 import {
   ListItem,
@@ -12,31 +13,32 @@ import {
   ButtonCancel,
   Wrapper,
   Remove,
-  TodoItemButton,
 } from "../styledComponents/todoItem.styled.js";
-import state from "../store/initialState";
 
 function TodoItem(props) {
   const [formIsVisible, setVisible] = useState(false);
   const [set, setState] = useState(props.value);
-
   return (
     <Wrapper>
+      <input
+        onChange={props.toggleTask}
+        onClick={() => {
+          console.log(props.toggleTask)
+        }}
+        type="checkbox"
+        id={props.id}
+      ></input>
       <ListItem
         htmlFor={props.id}
-        change={state | props.change}
+        change={props.change}
         onClick={() => {
           if (props.change) {
             setVisible(true);
           }
         }}
       >
-        <input type="checkbox" id={props.id}></input>
         {props.value}
       </ListItem>
-      <TodoItemButton change={props.change}>
-        {/* <input type="checkbox" id={props.id}></input> */}
-      </TodoItemButton>
 
       <Remove
         change={props.change}
