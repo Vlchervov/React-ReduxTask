@@ -24,14 +24,17 @@ function TodoItem(props) {
     >
       <input
         onChange={() => {
-          props.toggleTodo(props.id);
+          if (!props.change){
+            props.toggleTodo(props.id);
+          }
+          console.log()
         }}
         type="checkbox"
         id={props.id}
       ></input>
       <ListItem
         className={props.class}
-        htmlFor={props.id}
+        htmlFor={props.change === false ? `${props.id}` : ''}
         change={props.change}
         onClick={() => {
           if (props.change) {

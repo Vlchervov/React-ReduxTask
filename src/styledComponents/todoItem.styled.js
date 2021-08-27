@@ -7,7 +7,7 @@ export const Wrapper = styled.li`
   list-style: none;
 
   .checked {
-    opacity: ${({change}) => change ? '1' : '0.5'}
+    opacity: ${({change}) => change ? 'none' : '0.5'}
   }
 
   input[type='checkbox'] {
@@ -51,11 +51,6 @@ export const ListItem = styled.label`
     background-repeat: no-repeat;
     background-position: 50%;
   }
-
-  input[type='checkbox'] {
-
-  }
-
 `;
 
 export const EditItemModal = styled.div`

@@ -45,6 +45,7 @@ export const Form = styled.form`
   textarea {
     width: 295px;
     height: 160px;
+    padding-top: 30px;
     border: 2px solid #e6e6e6;
     box-sizing: border-box;
     padding-left: 15px;
@@ -57,7 +58,6 @@ export const Form = styled.form`
       font-family: "Gilroy";
       font-style: normal;
       font-size: 16px;
-
       letter-spacing: 0.01em;
 
       color: #999999;
