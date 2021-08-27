@@ -21,3 +21,12 @@ export const removeTask = (id) => {
       payload: id,
     };
   };
+
+
+
+export const toggleTodo = (id) => {
+  return {
+    type: "TOGGLE_TODO",
+    payload: id,
+  }
+}

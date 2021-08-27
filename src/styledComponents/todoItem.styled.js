@@ -1,8 +1,14 @@
 import styled from "styled-components";
 
+
+
 export const Wrapper = styled.li`
   position: relative;
   list-style: none;
+
+  .checked {
+    opacity: 0.5
+  }
 
   input[type='checkbox'] {
     display: none;
@@ -24,7 +30,11 @@ export const ListItem = styled.label`
   color: #000000;
   @media (min-height: 568px) and (max-width: 320px) {
     font-size: 15px;
+
+    
   }
+
+
 
   &::before {
    

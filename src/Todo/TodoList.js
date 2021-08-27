@@ -13,6 +13,7 @@ function TodoList(props) {
     return (
       <Fragment key={task.id}>
         <TodoItem
+          class={task.class}
           tasks={props.state}
           value={task.value}
           id={task.id}

@@ -17,6 +17,12 @@ const taskReducer = (state, action) => {
       const todoIndex = state.findIndex(({ id }) => id === action.payload.id);
       state[todoIndex].value = action.payload.value;
       return [...state];
+
+    case "TOGGLE_TODO":
+      const stateIndex = state.findIndex(({id}) => id === action.payload);
+      state[stateIndex].completed = !state[stateIndex].completed;
+      state[stateIndex].class = state[stateIndex].completed === true ? 'checked' : 'unchecked';
+      return[...state];
       
     default:
       return state;

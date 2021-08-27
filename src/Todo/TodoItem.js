@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { editTask } from "../store/actionCreators/actions";
 import { removeTask } from "../store/actionCreators/actions";
-import { toggleTask } from "../store/actionCreators/actions";
+import { toggleTodo } from "../store/actionCreators/actions";
 import { Transition } from "react-transition-group";
 import {
   ListItem,
@@ -21,19 +21,20 @@ function TodoItem(props) {
   return (
     <Wrapper>
       <input
-        onChange={props.toggleTask}
-        onClick={() => {
-          console.log(props.toggleTask)
+        onChange={() => {
+          props.toggleTodo(props.id);
         }}
         type="checkbox"
         id={props.id}
       ></input>
       <ListItem
+        className={props.class}
         htmlFor={props.id}
         change={props.change}
         onClick={() => {
           if (props.change) {
             setVisible(true);
+            console.log(props.class)
           }
         }}
       >
@@ -83,6 +84,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  toggleTodo: (id) => {
+    dispatch(toggleTodo(id));
+  },
   editTask: (value, id) => {
     dispatch(editTask(value, id));
   },
