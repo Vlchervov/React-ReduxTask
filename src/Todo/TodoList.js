@@ -31,7 +31,7 @@ function TodoList(props) {
       {props.state.length ? (
         <ul>{taskAdd}</ul>
       ) : (
-        <AfterRemove>Список пуст!</AfterRemove>
+        <AfterRemove>Список задач пуст!</AfterRemove>
       )}
       <AddModal change={change} />
     </>

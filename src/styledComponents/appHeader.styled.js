@@ -7,6 +7,7 @@ export const Header = styled.header`
 
   button {
     margin-top: 25px;
+    margin-right: 20px;
     color: #000000;
     font-size: 14px;
     font-family: "Gilroy";

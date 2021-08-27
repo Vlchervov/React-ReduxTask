@@ -124,6 +124,7 @@ export const CloseButton = styled.button`
   height: 40px;
   margin-top: 25px;
   background-color: #f2f2f2;
+  color: #4d4d4d;
   border: 1px solid rgba(255, 255, 255, 0);
   font-size: 16px;
 
