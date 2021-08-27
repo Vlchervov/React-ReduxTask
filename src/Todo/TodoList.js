@@ -6,7 +6,6 @@ import AppHeader from "../header/AppHeader";
 import { AfterRemove } from "../styledComponents/todoList.styled";
 
 function TodoList(props) {
-  const [state, setState] = useState(false);
   const [change, setChange] = useState(false);
 
   const taskAdd = props.state.map((task) => {
@@ -34,7 +33,7 @@ function TodoList(props) {
       ) : (
         <AfterRemove>Список пуст!</AfterRemove>
       )}
-      <AddModal state={state} setState={setState} change={change} />
+      <AddModal change={change} />
     </>
   );
 }
