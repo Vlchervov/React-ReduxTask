@@ -27,7 +27,6 @@ function TodoItem(props) {
           if (!props.change){
             props.toggleTodo(props.id);
           }
-          console.log()
         }}
         type="checkbox"
         id={props.id}
