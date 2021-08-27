@@ -19,7 +19,9 @@ function TodoItem(props) {
   const [formIsVisible, setVisible] = useState(false);
   const [set, setState] = useState(props.value);
   return (
-    <Wrapper>
+    <Wrapper
+    change={props.change}
+    >
       <input
         onChange={() => {
           props.toggleTodo(props.id);
@@ -34,7 +36,6 @@ function TodoItem(props) {
         onClick={() => {
           if (props.change) {
             setVisible(true);
-            console.log(props.class)
           }
         }}
       >
