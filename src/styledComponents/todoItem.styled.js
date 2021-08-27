@@ -7,7 +7,7 @@ export const Wrapper = styled.li`
   list-style: none;
 
   .checked {
-    opacity: 0.5
+    opacity: ${({change}) => change ? '1' : '0.5'}
   }
 
   input[type='checkbox'] {
