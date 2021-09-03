@@ -1,21 +1,19 @@
 import styled from "styled-components";
 
-
-
 export const Wrapper = styled.li`
   position: relative;
   list-style: none;
 
   .checked {
-    opacity: ${({change}) => change ? 'none' : '0.5'}
+    opacity: ${({ change }) => (change ? "none" : "0.5")};
   }
 
-  input[type='checkbox'] {
+  input[type="checkbox"] {
     display: none;
-    z-index: ${({change}) => (change ? '1' : '10')};
+    z-index: ${({ change }) => (change ? "1" : "10")};
   }
 
-  input[type='checkbox']:checked + label::before {
+  input[type="checkbox"]:checked + label::before {
     background-image: url(img/check.svg);
   }
 `;
@@ -30,14 +28,9 @@ export const ListItem = styled.label`
   color: #000000;
   @media (min-height: 568px) and (max-width: 320px) {
     font-size: 15px;
-
-    
   }
 
-
-
   &::before {
-   
     content: " ";
     cursor: pointer;
     position: absolute;
@@ -144,42 +137,6 @@ export const TodoItemButton = styled.div`
   top: 15%;
   left: -12%;
   cursor: pointer;
-
-  /* &:before {
-    content: "";
-    position: absolute;
-    width: 15px;
-    left: 6px;
-    top: 5px;
-    height: 15px;
-    border-radius: 100%;
-    z-index: 10;
-    background-size: 100%;
-  } */
-
-  /* input[type="checkbox"] {
-    display: none;
-    z-index: ${({ change }) => (change ? "1" : "10")};
-  } */
-
-  /* input[type='checkbox']:checked + label::before {
-    background-image: url(img/check.svg)
-  } */
-
-  /* &::after {
-    content: " ";
-    cursor: pointer;
-    position: absolute;
-    display: block;
-    left: 3px;
-    top: 1px;
-    height: 22px;
-    width: 22px;
-    border: 1px solid #d9d9d9;
-    border-radius: 50px;
-    background-color: white;
-    display: ${({ change }) => (change ? "none" : "")};
-  } */
 `;
 
 export const Remove = styled.button`

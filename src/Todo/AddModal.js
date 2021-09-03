@@ -17,13 +17,6 @@ function AddModal(props) {
   const [value, setValue] = useState("");
   const [formIsVisible, setVisible] = useState(false);
 
-  function submitHandler(event) {
-    event.preventDefault();
-
-    if (value.trim()) {
-      setValue("");
-    }
-  }
   return (
     <Wrapper>
       <ModalButtonAddTask
@@ -42,7 +35,12 @@ function AddModal(props) {
         {() => (
           <ModalWrapper>
             <ModalBody>
-              <Form onSubmit={submitHandler}>
+              <Form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setValue("");
+                }}
+              >
                 <textarea
                   placeholder="Введите текст задачи"
                   value={value}

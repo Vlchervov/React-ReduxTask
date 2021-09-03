@@ -19,12 +19,10 @@ function TodoItem(props) {
   const [formIsVisible, setVisible] = useState(false);
   const [set, setState] = useState(props.value);
   return (
-    <Wrapper
-    change={props.change}
-    >
+    <Wrapper change={props.change}>
       <input
         onChange={() => {
-          if (!props.change){
+          if (!props.change) {
             props.toggleTodo(props.id);
           }
         }}
@@ -33,7 +31,7 @@ function TodoItem(props) {
       ></input>
       <ListItem
         className={props.class}
-        htmlFor={props.change === false ? `${props.id}` : ''}
+        htmlFor={props.change === false ? `${props.id}` : ""}
         change={props.change}
         onClick={() => {
           if (props.change) {
