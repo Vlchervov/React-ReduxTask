@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { connect } from "react-redux";
 import { editTask } from "../store/actionCreators/actions";
 import { removeTask } from "../store/actionCreators/actions";
@@ -17,7 +16,7 @@ import {
 
 function TodoItem(props) {
   const [formIsVisible, setVisible] = useState(false);
-  const [set, setState] = useState(props.value);
+  const [state, setState] = useState(props.value);
   return (
     <Wrapper change={props.change}>
       <input
@@ -56,13 +55,13 @@ function TodoItem(props) {
             <EditModalBody>
               <input
                 type="text"
-                value={set}
+                value={state}
                 onChange={(event) => setState(event.target.value)}
               ></input>
               <div>
                 <RedactionButton
                   onClick={() => {
-                    props.editTask(set, props.id);
+                    props.editTask(state, props.id);
                     setVisible(false);
                   }}
                 >

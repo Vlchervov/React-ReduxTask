@@ -23,7 +23,7 @@ function TodoList(props) {
 
   return (
     <>
-      <AppHeader change={change} setChange={setChange} value={props.value} />
+      <AppHeader change={change} setChange={setChange} />
       {props.state.length ? (
         <ul>{taskAdd}</ul>
       ) : (
