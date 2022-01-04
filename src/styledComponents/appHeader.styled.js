@@ -22,7 +22,7 @@ export const Header = styled.header`
 `;
 
 export const Date = styled.h1`
-  font-family: Gilroy;
+  font-family: "Gilroy";
   font-weight: 800;
   height: 47px;
   font-style: normal;
